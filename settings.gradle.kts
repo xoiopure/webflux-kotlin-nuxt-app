@@ -17,5 +17,5 @@ pluginManagement {
   }
 }
 
-val rootProjectName: String by extra
-rootProject.name = rootProjectName
+val projectName: String by extra
+rootProject.name = projectName
