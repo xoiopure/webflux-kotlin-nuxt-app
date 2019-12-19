@@ -1,39 +1,24 @@
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar class="toolbar-md-primary">
-        <ion-title>twimmer</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-button class="todo-fab" @click="getMessageAction">
-      <i class="ion-md-add ion-ios-add" />
-    </ion-button>
-    <ion-button class="todo-fab" @click="connectAction">
-      <i class="ion-md-add ion-ios-add" />
-      <i class="ion-md-add ion-ios-add" />
-    </ion-button>
-    <ion-button class="todo-fab" @click="disconnectAction">
-      <i class="ion-ios-remove ion-md-remove" />
-    </ion-button>
-    <ion-list>
-      <ion-item :key="Date.now()">
+  <v-layout>
+    <v-flex class="text-center">
+      <h1>Twimmer</h1>
+      <button @click="getMessageAction">+</button>
+      <button @click="connectAction">++</button>
+      <button @click="disconnectAction">-</button>
+      <p :key="Date.now()">
         {{ messageState }}
-      </ion-item>
-      <ion-item v-for="(msg, index) in stateMessagesMessages" :key="index">
-        {{ msg }}
-      </ion-item>
-    </ion-list>
-  </ion-page>
+      </p>
+      <ul v-for="(msg, index) in stateMessagesMessages">
+        <li :key="index">{{ msg }}</li>
+      </ul>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
   import { mapMutations, mapState, mapActions } from 'vuex';
-  import Logo from '~/components/Logo.vue';
 
   export default {
-    components: {
-      Logo
-    },
     methods: {
       ...mapActions({
         getMessageAction: 'messages/getMessage',
@@ -54,3 +39,9 @@
     },
   };
 </script>
+
+<style scoped>
+  ul {
+    list-style: none;
+  }
+</style>

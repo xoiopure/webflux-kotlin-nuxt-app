@@ -1,11 +1,14 @@
+import colors from 'vuetify/es5/util/colors'
+
 const baseHref = process.env.BASE_HREF || '/';
 
 export default {
-  mode: 'spa',
+  mode: 'universal',
   /*
   ** Headers of the page
   */
   head: {
+    titleTemplate: '%s - ' + process.env.npm_package_name,
     title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
@@ -13,8 +16,7 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: baseHref + 'favicon.ico' },
-      // { rel: 'stylesheet', href: 'https://unpkg.com/ionicons@4.5.10-2/dist/css/ionicons.min.css' },
+      { rel: 'icon', type: 'image/x-icon', href: baseHref + 'favicon.ico' }
     ]
   },
   /*
@@ -25,24 +27,17 @@ export default {
   ** Global CSS
   */
   css: [
-    '../node_modules/@ionic/core/css/core.css',
-    '../node_modules/@ionic/core/css/normalize.css',
-    '../node_modules/@ionic/core/css/structure.css',
-    '../node_modules/@ionic/core/css/typography.css',
-    '../node_modules/@ionic/core/css/ionic.bundle.css',
-    '../node_modules/ionicons/dist/css/ionicons.css',
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/ionic.js', mode: 'client' },
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    // '@nuxtjs/router',
+    '@nuxtjs/vuetify',
   ],
   /*
   ** Nuxt.js modules
@@ -50,9 +45,10 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+    // Just for now disable PWA:
+    // '@nuxtjs/pwa',
     '@nuxtjs/proxy',
   ],
   proxy: process.env.NODE_ENV === 'production' ? {} : {
@@ -64,6 +60,27 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
+  },
+  /*
+  ** vuetify module configuration
+  ** https://github.com/nuxt-community/vuetify-module
+  */
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    theme: {
+      dark: true,
+      themes: {
+        dark: {
+          primary: colors.blue.darken2,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        }
+      }
+    }
   },
   /*
   ** Build configuration
