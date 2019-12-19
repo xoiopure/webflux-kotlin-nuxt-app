@@ -2,14 +2,20 @@
   <v-layout>
     <v-flex class="text-center">
       <h1>Twimmer</h1>
-      <button @click="getMessageAction">+</button>
-      <button @click="connectAction">++</button>
-      <button @click="disconnectAction">-</button>
+      <v-btn @click="getMessageAction">
+        <v-icon>email</v-icon>
+      </v-btn>
+      <v-btn @click="connectAction">
+        <v-icon>text_rotate_vertical</v-icon>
+      </v-btn>
+      <v-btn @click="disconnectAction">
+        <v-icon>cancel</v-icon>
+      </v-btn>
       <p :key="Date.now()">
         {{ messageState }}
       </p>
       <ul v-for="(msg, index) in stateMessagesMessages">
-        <li :key="index">{{ msg }}</li>
+        <li :key="index">{{ index }}: {{ msg }}</li>
       </ul>
     </v-flex>
   </v-layout>

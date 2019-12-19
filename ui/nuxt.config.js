@@ -1,6 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 const baseHref = process.env.BASE_HREF || '/';
+const isProd = process.env.NODE_ENV === 'production';
 
 export default {
   mode: 'universal',
@@ -27,6 +28,7 @@ export default {
   ** Global CSS
   */
   css: [
+    'material-design-icons-iconfont/dist/material-design-icons.css',
   ],
   /*
   ** Plugins to load before mounting the App
@@ -42,7 +44,14 @@ export default {
   /*
   ** Nuxt.js modules
   */
+  webfontloader: {
+    google: {
+      // https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap
+      families: ['Roboto:100,300,400,500,700,900&display=swap'],
+    }
+  },
   modules: [
+    'nuxt-webfontloader',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
@@ -78,20 +87,23 @@ export default {
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
           success: colors.green.accent3
-        }
-      }
-    }
+        },
+      },
+    },
+    icons: {
+      iconfont: 'mdiSvg' // || 'md' || 'fa' || 'fa4' || 'mdi', // default - only for display purposes
+    },
   },
   /*
   ** Build configuration
   */
   build: {
-    analyze: true,
+    // analyze: process.env.NODE_ENV === 'development',
     /*
     ** You can extend webpack config here
     */
     extend (config, { isClient }) {
-      if (!!isClient) {
+      if (isProd && isClient) {
         config.optimization.splitChunks.maxSize = 249856; // 244 Kib
       }
     }

@@ -3,6 +3,7 @@ Spring WebFlux reactive non-blocking Backend + Nuxt.js Ionic Frontend
 
 ## branches
 
+* [material-design-icons-iconfont npm package](https://jossef.github.io/material-design-icons-iconfont/)
 * [using ionic](https://github.com/daggerok/webflux-kotlin-ionic-nuxt-mono-app/tree/ionic)
 * [using vuetify](https://github.com/daggerok/webflux-kotlin-ionic-nuxt-mono-app/tree/master)
 
@@ -26,6 +27,9 @@ http --stream :8080/api/messages
 
 ## resources
 
+* [Nuxt.js Vuetify module](https://github.com/nuxt-community/vuetify-module)
+* [Vuetify icons setup](https://vuetifyjs.com/ru/customization/icons)
+* [Nuxt.js web font loader](https://github.com/Developmint/nuxt-webfontloader)
 * [Issue: Malformed markup: Attribute "..." appears more than once in element](https://github.com/thymeleaf/thymeleaf/issues/572)
 * [webpack split-chunks plugin](https://webpack.js.org/plugins/split-chunks-plugin/)
 * [Nuxt.js split chunks max size configuration.](https://github.com/nuxt/nuxt.js/issues/2201)
