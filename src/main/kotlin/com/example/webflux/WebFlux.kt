@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
 import org.springframework.core.io.ClassPathResource
 import org.springframework.http.MediaType
+import org.springframework.ui.Model
 import org.springframework.web.reactive.config.CorsRegistry
 import org.springframework.web.reactive.config.WebFluxConfigurer
 import org.springframework.web.reactive.function.server.RenderingResponse
@@ -67,14 +68,22 @@ class CorsWebFlux : WebFluxConfigurer {
         //     .header("X-FALLBACK-METHOD", it.methodName())
         //     .render("index", "message" to "WebFlux fallback ${it.path()} from RenderingResponse!")
         //
+        val params = it.queryParams()
+            .entries.map { e -> e.key to e.value.orEmpty().joinToString(separator = ",") }
+            .map { p -> "${p.first}='${p.second}'" }
+            .foldRight("") { first, second -> "$first,$second" }
+        val model = mapOf(
+            "message" to "WebFlux fallback ${it.path()} from RenderingResponse!"
+        )
+        // ok().header("X-FALLBACK-PATH", it.path())
+        //     .header("X-FALLBACK-METHOD", it.methodName())
+        //     .header("X-FALLBACK-QUERY-PARAMS", params)
+        //     .render("index", model)
         RenderingResponse.create("index")
             .header("X-FALLBACK-PATH", it.path())
             .header("X-FALLBACK-METHOD", it.methodName())
-            .header("X-FALLBACK-QUERY-PARAMS", it.queryParams()
-                .entries.map { it.key to it.value.orEmpty().joinToString(separator = ",") }
-                .map { "${it.first}='${it.second}'" }
-                .foldRight("") { first, second -> "$first,$second" })
-            .modelAttributes("message" to "WebFlux fallback ${it.path()} from RenderingResponse!")
+            .header("X-FALLBACK-QUERY-PARAMS", params)
+            .modelAttributes(model)
             .build()
       }
     }

@@ -5,6 +5,8 @@ git:
   depth: false
 language: java
 python: 3.7
+os: linux
+arch: amd64
 service: docker
 addons:
   apt:
@@ -19,11 +21,10 @@ before_install:
   - sudo pip install --upgrade httpie
   - |
     if [ ! -f ${HOME}/.local/daggerok/bash-functions/master/main.bash ] ; then
-      mkdir -p ${HOME}/.local/daggerok/bash-functions/master ;
-      curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash > ${HOME}/.local/daggerok/bash-functions/master/main.bash ;
+      mkdir -p ${HOME}/.local/daggerok/bash-functions/master
+      curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash > ${HOME}/.local/daggerok/bash-functions/master/main.bash
     fi
-  - source ~/.local/daggerok/bash-functions/master/main.bash
-  - source <(curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash)
+    source ~/.local/daggerok/bash-functions/master/main.bash
   - stop_any 80 8080
 jobs:
   include:
@@ -46,3 +47,4 @@ cache:
   directories:
     - ~/.local/daggerok
     - ~/.gradle
+    - ~/.n*

@@ -58,8 +58,8 @@ tasks {
       showStandardStreams = true
       events(
           org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED,
-          org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
-          org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+          org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED,
+          org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
       )
     }
   }
@@ -79,7 +79,7 @@ tasks {
     delete("$projectDir/src/main/resources/static")
   }
   processResources {
-    dependsOn("npm_run_build")
+    dependsOn("npm_run_generate")
   }
 }
 

@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar class="toolbar-md-primary">
-        <ion-title>switter</ion-title>
+        <ion-title>twimmer</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-button class="todo-fab" @click="getMessageAction">
