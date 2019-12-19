@@ -26,6 +26,7 @@ http --stream :8080/api/messages
 
 ## resources
 
+* [webpack split-chunks plugin](https://webpack.js.org/plugins/split-chunks-plugin/)
 * [Nuxt.js split chunks max size configuration.](https://github.com/nuxt/nuxt.js/issues/2201)
 * https://github.com/daggerok/typescript-ionic-nuxt-app
 * https://github.com/daggerok/spring-boot-nuxt-spa
