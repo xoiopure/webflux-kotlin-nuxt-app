@@ -1,6 +1,11 @@
 # webflux-kotlin-ionic-nuxt-mono-app [![Build Status](https://travis-ci.org/daggerok/webflux-kotlin-ionic-nuxt-mono-app.svg?branch=master)](https://travis-ci.org/daggerok/webflux-kotlin-ionic-nuxt-mono-app)
 Spring WebFlux reactive non-blocking Backend + Nuxt.js Ionic Frontend
 
+## branches
+
+* [using ionic](https://github.com/daggerok/webflux-kotlin-ionic-nuxt-mono-app/tree/ionic)
+* [using vuetify](https://github.com/daggerok/webflux-kotlin-ionic-nuxt-mono-app/tree/master)
+
 ## build and run
 
 ```bash
