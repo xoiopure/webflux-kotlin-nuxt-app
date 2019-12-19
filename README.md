@@ -26,6 +26,7 @@ http --stream :8080/api/messages
 
 ## resources
 
+* [Nuxt.js split chunks max size configuration.](https://github.com/nuxt/nuxt.js/issues/2201)
 * https://github.com/daggerok/typescript-ionic-nuxt-app
 * https://github.com/daggerok/spring-boot-nuxt-spa
 * https://github.com/daggerok/vue-ionic-example

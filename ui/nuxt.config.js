@@ -86,10 +86,14 @@ export default {
   ** Build configuration
   */
   build: {
+    analyze: true,
     /*
     ** You can extend webpack config here
     */
-    extend (config, ctx) {
+    extend (config, { isClient }) {
+      if (!!isClient) {
+        config.optimization.splitChunks.maxSize = 249856; // 244 Kib
+      }
     }
   },
   generate: {
