@@ -27,9 +27,9 @@
   export default {
     methods: {
       ...mapActions({
-        getMessageAction: 'messages/getMessage',
         connectAction: 'messages/connect',
         disconnectAction: 'messages/disconnect',
+        getMessageAction: 'messages/getMessage',
       }),
     },
     computed: {
