@@ -1,6 +1,6 @@
 {
   "name": "twimmer",
-  "version": "1.0.0",
+  "version": "0.0.2-SNAPSHOT",
   "description": "My Vuetify Nuxt.js app",
   "author": "Maksim Kostromin",
   "private": true,
