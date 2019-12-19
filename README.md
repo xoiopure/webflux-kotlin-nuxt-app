@@ -26,6 +26,7 @@ http --stream :8080/api/messages
 
 ## resources
 
+* [Issue: Malformed markup: Attribute "..." appears more than once in element](https://github.com/thymeleaf/thymeleaf/issues/572)
 * [webpack split-chunks plugin](https://webpack.js.org/plugins/split-chunks-plugin/)
 * [Nuxt.js split chunks max size configuration.](https://github.com/nuxt/nuxt.js/issues/2201)
 * https://github.com/daggerok/typescript-ionic-nuxt-app
