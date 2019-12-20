@@ -1,11 +1,11 @@
-# webflux-kotlin-ionic-nuxt-mono-app [![Build Status](https://travis-ci.org/daggerok/webflux-kotlin-ionic-nuxt-mono-app.svg?branch=master)](https://travis-ci.org/daggerok/webflux-kotlin-ionic-nuxt-mono-app)
+# webflux-kotlin-nuxt-app [![Build Status](https://travis-ci.org/daggerok/webflux-kotlin-nuxt-app.svg?branch=master)](https://travis-ci.org/daggerok/webflux-kotlin-nuxt-app)
 Spring WebFlux reactive non-blocking Backend + Nuxt.js Ionic Frontend
 
 ## branches
 
 * [material-design-icons-iconfont npm package](https://jossef.github.io/material-design-icons-iconfont/)
-* [using ionic](https://github.com/daggerok/webflux-kotlin-ionic-nuxt-mono-app/tree/ionic)
-* [using vuetify](https://github.com/daggerok/webflux-kotlin-ionic-nuxt-mono-app/tree/master)
+* [using ionic](https://github.com/daggerok/webflux-kotlin-nuxt-app/tree/ionic)
+* [using vuetify](https://github.com/daggerok/webflux-kotlin-nuxt-app/tree/master)
 
 ## build and run
 
