@@ -2,7 +2,6 @@ plugins {
   kotlin("jvm")
   kotlin("plugin.spring")
   id("org.springframework.boot")
-  id("com.github.node-gradle.node")
   id("com.github.ben-manes.versions")
   id("io.spring.dependency-management")
 }
@@ -11,9 +10,6 @@ val projectGroup: String by project
 val projectVersion: String by project
 val freeCompilerArg: String by project
 val projectJvmTarget: String by project
-val projectNpmVersion: String by project
-val projectNodeVersion: String by project
-val projectYarnVersion: String by project
 val projectGradleVersion: String by project
 val kotlinCoroutinesReactor: String by project
 
@@ -79,20 +75,8 @@ tasks {
     delete("$projectDir/src/main/resources/static")
   }
   processResources {
-    dependsOn("npm_run_generate")
+    dependsOn(":ui:build")
   }
-}
-
-node {
-  download = true
-  version = projectNodeVersion
-  npmVersion = projectNpmVersion
-  yarnVersion = projectYarnVersion
-  workDir = file("$buildDir/nodejs")
-  npmWorkDir = file("$buildDir/npm")
-  yarnWorkDir = file("$buildDir/yarn")
-  // distBaseUrl = "https://nodejs.org/dist"
-  nodeModulesDir = file("$projectDir/ui")
 }
 
 sourceSets {
