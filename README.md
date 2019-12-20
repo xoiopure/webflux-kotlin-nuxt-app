@@ -27,6 +27,9 @@ http --stream :8080/api/messages
 
 ## resources
 
+* https://github.com/maoberlehner/vuex-map-fields
+* https://chunkbytes.com/2019/02/v-model-with-vuex/
+* https://github.com/vuejs/vuex/issues/1037
 * [Nuxt.js Vuetify module](https://github.com/nuxt-community/vuetify-module)
 * [Vuetify icons setup](https://vuetifyjs.com/ru/customization/icons)
 * [Nuxt.js web font loader](https://github.com/Developmint/nuxt-webfontloader)
