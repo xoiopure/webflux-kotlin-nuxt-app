@@ -10,9 +10,7 @@ export const state = () => ({
  * Private API: State mutations. Uses directly only by actions.
  */
 export const mutations = {
-  setSidebarEnabled(state, value) {
-    state.sidebarEnabled = value;
-  },
+  setSidebarEnabled: (state, value) => state.sidebarEnabled = value,
 };
 
 /**
@@ -27,10 +25,8 @@ export const getters = {
  * Public API: Can be directly used in App.
  */
 export const actions = {
-  toggleSidebar({ commit, getters, state, dispatch }) {
-    commit('setSidebarEnabled', !getters.isSidebarEnabled);
-  },
-  setSidebarEnabled({ commit, getters, state, dispatch }, value) {
-    commit('setSidebarEnabled', value);
-  },
+  toggleSidebar: ({ commit, getters, state, dispatch }) =>
+    commit('setSidebarEnabled', !getters.isSidebarEnabled),
+  setSidebarEnabled: ({ commit, getters, state, dispatch }, value) =>
+    commit('setSidebarEnabled', value),
 };
