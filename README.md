@@ -27,6 +27,9 @@ http --stream :8080/api/messages
 
 ## resources
 
+* https://github.com/bmuschko/gradle-docker-plugin/blob/master/src/docs/samples/code/spring-boot-plugin/basic/kotlin/build.gradle.kts
+* https://github.com/daggerok/ng2-redux-pooling/blob/570c996035129d5cbec41487ad9ac463d0fd3cf6/docker/build.gradle
+* https://unix.stackexchange.com/questions/84814/health-check-of-web-page-using-curl
 * https://github.com/maoberlehner/vuex-map-fields
 * https://chunkbytes.com/2019/02/v-model-with-vuex/
 * https://github.com/vuejs/vuex/issues/1037

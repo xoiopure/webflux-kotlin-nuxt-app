@@ -4,6 +4,7 @@ git:
   quiet: true
   depth: false
 language: java
+jdk: openjdk11
 python: 3.7
 os: linux
 arch: amd64
@@ -29,8 +30,21 @@ before_install:
 jobs:
   include:
     - stage: test
+      name: bmuschko docker-spring-boot-application
+      script:
+        - cd $TRAVIS_BUILD_DIR && ./gradlew -Pdocker
+        - cd $TRAVIS_BUILD_DIR && ./gradlew dockerRun &
+        #- sleep 25s # wait_for 8080
+        - while [[ ! `curl -sSf http://127.0.0.1:8080/actuator/health || return 1` ]] ; do echo -n '...' ; sleep 1s ; done
+        - http :8080
+        - http :8080/not-found
+        - http :8080/api/message
+        - curl localhost:8080/api/messages &
+        - sleep 3s
+        #- http post :8080/actuator/shutdown
+        - cd $TRAVIS_BUILD_DIR && ./gradlew dockerRm
+    - stage: test
       name: webflux
-      jdk: openjdk11
       script:
         - cd $TRAVIS_BUILD_DIR && ./gradlew
         - java -Dspring.profiles.active=webflux -jar $TRAVIS_BUILD_DIR/build/libs/*.jar &
@@ -45,6 +59,8 @@ cache:
   pip: true
   packages: true
   directories:
+    - ./ui/node_modules
     - ~/.local/daggerok
+    - ~/.docker
     - ~/.gradle
     - ~/.n*

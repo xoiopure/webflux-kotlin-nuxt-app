@@ -8,12 +8,14 @@ pluginManagement {
     val springBootVersion: String by extra
     val versionsPluginVersion: String by extra
     val dependencyManagementVersion: String by extra
+    val dockerSpringBootPluginVersion: String by extra
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.spring") version kotlinVersion
     id("org.springframework.boot") version springBootVersion
     id("com.github.node-gradle.node") version nodeGradleVersion
     id("com.github.ben-manes.versions") version versionsPluginVersion
     id("io.spring.dependency-management") version dependencyManagementVersion
+    id("com.bmuschko.docker-spring-boot-application") version dockerSpringBootPluginVersion
   }
 }
 

@@ -4,6 +4,7 @@ plugins {
   id("org.springframework.boot")
   id("com.github.ben-manes.versions")
   id("io.spring.dependency-management")
+  id("com.bmuschko.docker-spring-boot-application")
 }
 
 val projectGroup: String by project
@@ -46,7 +47,50 @@ dependencies {
   testImplementation("io.projectreactor:reactor-test")
 }
 
+sourceSets {
+  main {
+    java.srcDirs(
+        "src/main/java",
+        "src/main/kotlin"
+    )
+  }
+  test {
+    java.srcDirs(
+        "src/test/java",
+        "src/test/kotlin"
+    )
+  }
+}
+
+if ("" == project.findProperty("docker") ?: "nope") defaultTasks("dockerBuildImage")
+else defaultTasks("build")
+
+docker {
+  springBootApplication {
+    jvmArgs.set(listOf("-Xms64m", "-Xmx2048m", "-Djava.net.preferIPv4Stack=true", "-XX:+UnlockExperimentalVMOptions",
+        "-XX:+UseCGroupMemoryLimitForHeap", "-XshowSettings:vm", "-Dspring.devtools.add-properties=false"))
+    images.set(listOf("daggerok/${project.name}:latest", "daggerok/${project.name}:${project.version}"))
+    maintainer.set("Maksim Kostromin https://github.com/daggerok")
+    baseImage.set("adoptopenjdk:8u232-b09-jre-hotspot-bionic")
+    ports.set(listOf(8080))
+  }
+}
+
 tasks {
+  register<Exec>("dockerRun") {
+    //// 0:
+    //executable = "docker"
+    //args("run", "--rm", "-i", "-p", "8080:8080", "--name", "run-${project.name}-${project.version}", "daggerok/${project.name}:${project.version}")
+    //// 1:
+    // executable = "bash"
+    // args("-c", "docker run --rm -i -p 8080:8080 --name run-${project.name}-${project.version} daggerok/${project.name}:${project.version}")
+    //// 2:
+    //commandLine("bash", "-c", "docker run --rm -i -p 8080:8080 --name run-${project.name}-${project.version} daggerok/${project.name}:${project.version}")
+    commandLine("docker", "run", "--rm", "-i", "-p", "8080:8080", "--name", "run-${project.name}-${project.version}", "daggerok/${project.name}:${project.version}")
+  }
+  register<Exec>("dockerRm") {
+    commandLine("bash", "-c", "docker rm -v -f run-${project.name}-${project.version} || echo nothing to remove")
+  }
   withType<Test> {
     useJUnitPlatform()
     testLogging {
@@ -78,20 +122,3 @@ tasks {
     dependsOn(":ui:build")
   }
 }
-
-sourceSets {
-  main {
-    java.srcDirs(
-        "src/main/java",
-        "src/main/kotlin"
-    )
-  }
-  test {
-    java.srcDirs(
-        "src/test/java",
-        "src/test/kotlin"
-    )
-  }
-}
-
-defaultTasks("build")
