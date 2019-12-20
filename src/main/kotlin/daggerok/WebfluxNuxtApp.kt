@@ -1,11 +1,11 @@
-package com.example.webflux
+package daggerok
 
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Profile
 import org.springframework.core.io.ClassPathResource
 import org.springframework.http.MediaType
-import org.springframework.ui.Model
 import org.springframework.web.reactive.config.CorsRegistry
 import org.springframework.web.reactive.config.WebFluxConfigurer
 import org.springframework.web.reactive.function.server.RenderingResponse
@@ -13,7 +13,6 @@ import org.springframework.web.reactive.function.server.body
 import org.springframework.web.reactive.function.server.router
 import reactor.core.publisher.Flux
 import reactor.kotlin.core.publisher.toMono
-import java.net.URI
 import java.time.Duration
 
 @Configuration
@@ -21,9 +20,9 @@ class CorsWebFlux : WebFluxConfigurer {
 
   override fun addCorsMappings(registry: CorsRegistry) {
     registry.addMapping("/**")
-            .allowedOrigins("*") // any host or put domain(s) here
-            // .allowedMethods("GET, POST") // put the http verbs you want allow
-            // .allowedHeaders("Authorization") // put the http headers you want allow
+        .allowedOrigins("*") // any host or put domain(s) here
+    // .allowedMethods("GET, POST") // put the http verbs you want allow
+    // .allowedHeaders("Authorization") // put the http headers you want allow
   }
 
   @Bean
@@ -88,4 +87,11 @@ class CorsWebFlux : WebFluxConfigurer {
       }
     }
   }
+}
+
+@SpringBootApplication
+class WebfluxNuxtApp
+
+fun main(args: Array<String>) {
+  runApplication<WebfluxNuxtApp>(*args)
 }
