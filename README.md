@@ -1,5 +1,5 @@
 # webflux-kotlin-nuxt-app [![Build Status](https://travis-ci.org/daggerok/webflux-kotlin-nuxt-app.svg?branch=master)](https://travis-ci.org/daggerok/webflux-kotlin-nuxt-app)
-Spring WebFlux reactive non-blocking Backend + Nuxt.js Ionic Frontend
+Spring WebFlux reactive non-blocking streamming backend + Nuxt.js Vuetify mobile first Frontend
 
 ## branches
 
