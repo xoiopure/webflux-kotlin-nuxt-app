@@ -1,7 +1,6 @@
 <template>
   <v-layout>
     <v-flex class="text-center">
-      <h1>Twimmer</h1>
       <v-btn @click="getMessageAction">
         <v-icon>email</v-icon>
       </v-btn>
@@ -12,10 +11,12 @@
         <v-icon>cancel</v-icon>
       </v-btn>
       <p :key="Date.now()">
-        {{ messageState }}
+        <Tweet v-if="messageState" :message="messageState"/>
       </p>
       <ul v-for="(msg, index) in stateMessagesMessages">
-        <li :key="index">{{ index }}: {{ msg }}</li>
+        <li :key="index">
+          <Tweet :message="msg" />
+        </li>
       </ul>
     </v-flex>
   </v-layout>
@@ -23,8 +24,12 @@
 
 <script>
   import { mapMutations, mapState, mapActions } from 'vuex';
+  import Tweet from '../components/Tweet';
 
   export default {
+    components: {
+      Tweet,
+    },
     methods: {
       ...mapActions({
         connectAction: 'messages/connect',
@@ -49,5 +54,9 @@
 <style scoped>
   ul {
     list-style: none;
+    padding: 0;
+  }
+  li {
+    margin: 0 auto 1em;
   }
 </style>

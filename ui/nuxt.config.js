@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors'
+import colors from 'vuetify/es5/util/colors';
 
 const baseHref = process.env.BASE_HREF || '/';
 const isProd = process.env.NODE_ENV === 'production';
@@ -33,8 +33,7 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-  ],
+  plugins: [],
   /*
   ** Nuxt.js dev-modules
   */
@@ -68,8 +67,7 @@ export default {
   ** Axios module configuration
   ** See https://axios.nuxtjs.org/options
   */
-  axios: {
-  },
+  axios: {},
   /*
   ** vuetify module configuration
   ** https://github.com/nuxt-community/vuetify-module
@@ -102,7 +100,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend (config, { isClient }) {
+    extend(config, { isClient }) {
       if (isProd && isClient) {
         config.optimization.splitChunks.maxSize = 249856; // 244 Kib
       }
@@ -118,4 +116,4 @@ export default {
     base: baseHref,
     mode: 'history',
   },
-}
+};
