@@ -80,10 +80,10 @@
       </v-list>
     </v-navigation-drawer>
     <v-footer
-      :fixed="fixed"
+      absolute
       app
     >
-      <span>&copy; 2019</span>
+      <span>Maksim Kostromin &copy; 2019 - present</span>
     </v-footer>
   </v-app>
 </template>
