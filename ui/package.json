@@ -42,5 +42,13 @@
   "directories": {
     "test": "test"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xoiopure/webflux-kotlin-nuxt-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xoiopure/webflux-kotlin-nuxt-app/issues"
+  },
+  "homepage": "https://github.com/xoiopure/webflux-kotlin-nuxt-app#readme"
 }
